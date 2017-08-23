@@ -126,9 +126,12 @@ littleBtn_hover {
   background-color: #F8F8F8;
 }
 
-/* .longBlank {
-  flex:0 0 30%
-} */
+.longName {
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  display: flex;
+}
 
 
 

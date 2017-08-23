@@ -2,10 +2,16 @@
 
 <template name="locInfoTemplate">
 		<view class="locInfo">
-      <view class="Grid">
+      <view class="Grid" wx:if="{{item.name.length <= 3}}">
       	<text class="Grid-cell u-1of8 locInfo-text1">{{item.name}}</text>
 				<text class="Grid-cell locInfo-text1">{{item.num}}</text>
       </view>
+
+      <view class="longName" wx:if="{{item.name.length > 3}}">
+        <text class="Grid-cell locInfo-text1">{{item.name}}</text>
+        <text class="Grid-cell locInfo-text1">{{item.num}}</text>
+      </view>
+
 			<view class="Grid">
 				<text class="Grid-cell u-full locInfo-text2">{{item.region[0] + ' ' + item.region[1] + ' ' +item.region[2] + ' ' +item.address}}</text>
 			</view>
