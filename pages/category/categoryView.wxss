@@ -1,0 +1,68 @@
+/* categoryView.wxss */
+page{  
+  display: flex;  
+  flex-direction: column;  
+  height: 100%;  
+}  
+
+.navbar{  
+  flex: none;  
+  display: flex;  
+  background: #fff;  
+  /* height: 80rpx;
+  overflow: hidden; */
+  background-color: RGB(247, 247, 247);
+  height: 70rpx;
+}
+
+.navbar .wrapBar {
+  display: flex;
+}
+
+.navbar .item{  
+  position: relative;  
+  flex: auto;  
+  text-align: center;  
+  font-size: 30rpx;
+  line-height: 60rpx;  
+  color: gray;
+}  
+
+.navbar .item.active{  
+  color: black;
+}  
+
+.navbar .item.active:after{  
+  content: "";  
+  display: block; 
+  position: absolute;  
+  bottom: 0;  
+  left: 0;  
+  right: 0; 
+  height: 4rpx;  
+  background: black;  
+}  
+
+
+button {
+  background: transparent;
+}
+
+button::after {
+  border: 0;
+}
+
+.navbarBtn {
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.navbarBtn.icon {
+  transform: rotate(90deg);
+  width: 20rpx;
+  height: 40rpx;
+}
+
+.blankblock {
+  width: 30rpx;
+}

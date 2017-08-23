@@ -1,0 +1,36 @@
+<!--addLocView.wxml-->
+<view class="myContainer">
+  <view class="editView">
+		  <view class="Grid locInfo-text3">
+			  <text>收货人：</text>
+			  <input class="shortInput" bindblur="bindNameChange" value="{{locInfo.name || ''}}" auto-focus maxlength="30"></input>
+		  </view>
+		  <view class="spitLine"/>
+		  <view class="Grid locInfo-text3">
+			  <text>联系方式：</text>
+			  <input type="number" class="shortInput" bindblur="bindNumChange" value="{{locInfo.num || ''}}" type="number" maxlength="30"></input>
+		  </view>
+		  <view class="spitLine"/>
+      <view class="regionPicker locInfo-text3 Grid">
+        <picker mode="region" bindchange="bindRegionChange" value="{{locInfo.region}}" customItem="{{customItem}}">
+          <view class="picker">
+            所在地区：{{locInfo.region[0]}}，{{locInfo.region[1]}}，{{locInfo.region[2]}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="spitLine"/>
+		  <view class="locInfo-text3 longInputGrid">
+			  <text>详细地址：</text>
+			  <textarea value="123" bindblur="bindAddressChange"  maxlength="140" value="{{locInfo.address}}"></textarea>
+		  </view>
+	  </view>
+    <view class="errorHint" wx:if="{{hasErr}}">
+      <text>信息不全</text>
+    </view>
+	  <view class="bottomBar">
+		  <button class="addLocBtn" bindtap="saveLocBtnTap" size="{{bottomBar.btnSize}}">
+			  <text class="addLocBtnText">保存</text>
+		  </button>
+	  </view>
+</view>

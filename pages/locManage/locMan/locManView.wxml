@@ -1,0 +1,68 @@
+<!--locManView.wxml-->
+
+<template name="locInfoTemplate">
+		<view class="locInfo">
+      <view class="Grid">
+      	<text class="Grid-cell u-1of8 locInfo-text1">{{item.name}}</text>
+				<text class="Grid-cell locInfo-text1">{{item.num}}</text>
+      </view>
+			<view class="Grid">
+				<text class="Grid-cell u-full locInfo-text2">{{item.region[0] + ' ' + item.region[1] + ' ' +item.region[2] + ' ' +item.address}}</text>
+			</view>
+      <view class="spitLine Grid-cell u-full">
+      </view>
+			<view class="Grid">
+				<button bindtap="setDefaultLoc" data-id="{{item.id}}" plain="true" class="Grid-cell u-3of10 locInfo-bottomBtn">
+          <icon wx:if="{{!item.isDefault}}" type="circle" size="18"/> 
+          <icon wx:if="{{item.isDefault}}" type="success" size="18"/>
+					<text class="locInfo-text3">设为默认</text>
+				</button>
+        <view class="Grid-cell u-3of10"></view>
+				<button plain="true" data-id="{{item.id}}" bindtap="editLocBtnClick" class="Grid-cell locInfo-bottomBtn leftBtn" >
+					<image class='locLittleImg' src="../../../resources/编辑.png"></image>
+					<text class="locInfo-text3">编辑</text>
+				</button> 
+				<button plain="true" bindtap="deleteLocBtnClick" data-id="{{item.id}}" class="Grid-cell locInfo-bottomBtn leftBtn">
+					<image class='locLittleImg' src="../../../resources/删除.png"></image>
+					<text class="locInfo-text3">删除</text>
+				</button>
+		  </view>
+    </view>
+  </template>
+
+
+
+<view class="myContainer">
+
+	<view wx:if="{{userLocInfo.length == 0}}" class='noLocView'>
+		<image class='noLocIcon' mode="{{noLoc.mode}}" src="{{noLoc.image}}"></image>
+		<text class="noLocWarn">{{noLoc.warnText}}</text>
+	</view>
+
+  <scroll-view scroll-y wx:else class="hasLocView">
+  	<block class="myBlock" wx:key="id"  wx:for="{{userLocInfo}}">
+  		<view class="bigBlankLine"/>
+  		<template is="locInfoTemplate" data="{{item}}"/>
+  	</block>
+  </scroll-view>
+
+	<view class="bottomBar">
+		<button class="addLocBtn" bindtap="addLocBtnTap" size="{{bottomBar.btnSize}}">
+			<image class="addLocBtnIcon" src="{{addLocImageSrc}}"></image>
+			<text class="addLocBtnText">新建地址</text>
+		</button>
+	</view>
+
+</view>
+
+
+
+
+
+
+
+
+
+
+
+

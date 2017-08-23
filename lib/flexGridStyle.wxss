@@ -1,0 +1,53 @@
+.Grid {
+  display: flex;
+  align-items:center;
+  flex-wrap:nowrap;
+}
+
+.Grid-cell {
+  flex: 1;
+}
+
+.Grid-cell.u-full {
+  flex: 0 0 100%;
+}
+
+.Grid-cell.u-1of2 {
+  flex: 0 0 50%;
+}
+
+.Grid-cell.u-1of3 {
+  flex: 0 0 33.3333%;
+}
+
+.Grid-cell.u-1of4 {
+  flex: 0 0 25%;
+}
+
+.Grid-cell.u-3of5 {
+  flex: 0 0 60%;
+}
+
+.Grid-cell.u-3of10 {
+  flex: 0 0 30%;
+}
+
+.Grid-cell.u-1of8 {
+	flex: 0 0 12.5%;
+}
+
+.Grid-cell.u-7of8 {
+	flex: 0 0 87.5%;
+}
+
+.spitLine {
+  height: 2rpx;
+  background-color: RGB(246, 247, 248);
+  margin-bottom: 5rpx;
+  margin-top: 20rpx;
+}
+
+.bigBlankLine {
+  background-color: RGB(246, 247, 248);
+  height: 20rpx;
+}

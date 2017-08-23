@@ -1,0 +1,37 @@
+/* addLocView.wxss */
+@import "../../../lib/myCheckBox.wxss";
+@import "../../../lib/flexGridStyle.wxss";
+@import "../locMan/locManView.wxss";
+
+.editView {
+	width: 100%;
+	background: white;
+}
+
+.editView.view {
+	align-items:center;
+}
+
+.shortInput {
+	width: 80%
+}
+
+.longInputGrid {
+  margin-top: 10rpx;
+	display: flex;
+	flex-wrap:wrap;
+}
+
+textarea {
+	height: 130rpx;
+}
+
+.regionPicker {
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.errorHint {
+  color: red;
+  font-size: 30rpx;
+}

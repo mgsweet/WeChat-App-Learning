@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="container">
+  <button bindtap="locManageTap" class="">
+    <text class="Grid">地址管理</text>
+  </button>
+  <button bindtap="categoryTap" class="">
+    <text class="Grid">分类选择</text>
+  </button>
+</view>

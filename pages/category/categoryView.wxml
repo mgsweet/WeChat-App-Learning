@@ -1,0 +1,17 @@
+<!--categoryView.wxml-->
+<!--顶部分类导航条-->  
+<view class="classname">
+  <view class="navbar">  
+    <scroll-view scroll-x="true">
+      <view>
+        <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" 
+          wx:key="unique" bindtap="navbarTap">{{item}}</text>
+      </view>
+    </scroll-view>
+    <view class="blankblock"></view>
+    <button class="navbarBtn">
+      <image src="../../resources/返回.png" class="navbarBtn icon"></image>
+    </button> 
+  </view>  
+</view>
+
