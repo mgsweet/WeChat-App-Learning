@@ -1,37 +1,38 @@
 // categoryView.js
 Page({
   data: {
-    navbar: ['全部', '分类一', '分大类一', '分类三', '分类四', '分类五', '分类三', '分类四', '分类五', '分类三', '分类四', '分类五'],
+    categories: ['全部', '分类一', '分大类一', '分类三', '分类四', '分类五', '分类三', '分类四', '分类五', '分类三', '分类四', '分类五'],
     currentTab: 0,
     scrollLeftValue: 0,
     isPickerShow: false,
+    isBgNeed: false,
     commodities: [
       {
-        category: "食品",
+        category: "分类三",
         imgSrc: "../../resources/商品图测试.jpg",
         title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
         price: 999
       },
       {
-        category: "食品",
+        category: "分类三",
         imgSrc: "../../resources/商品图测试.jpg",
         title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
         price: 999
       },
       {
-        category: "食品",
+        category: "分类三",
         imgSrc: "../../resources/商品图测试.jpg",
         title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
         price: 999
       },
       {
-        category: "食品",
+        category: "分类三",
         imgSrc: "../../resources/商品图测试.jpg",
         title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
         price: 999
       },
       {
-        category: "食品",
+        category: "分类一",
         imgSrc: "../../resources/商品图测试.jpg",
         title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
         price: 999
@@ -57,11 +58,33 @@ Page({
     })
   },
   navbarBtnClick: function(e) {
+    this.data.isBgNeed = !this.data.isPickerShow
+    this.setData({
+        isBgNeed: this.data.isBgNeed
+    })
+
     this.data.isPickerShow = !this.data.isPickerShow
     this.setData({
       isPickerShow: this.data.isPickerShow,
-      needAnimation: true
     })
+  },
+  swiperChange: function (e) {    
+    console.log(e)
+    this.setData({  
+      currentTab: e.detail.current,  
+    })
+  },
+
+  bgTap: function(e) {
+    if (this.data.isPickerShow) {
+      this.navbarBtnClick();
+    } else {
+       return;
+    }
+  },
+
+  itemTap: function(e) {
+    console.log("haha");
   },
 
   /**

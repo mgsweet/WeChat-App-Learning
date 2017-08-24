@@ -102,6 +102,7 @@ button::after {
 .itemContainer {
   background-color: transparent;
   margin-top: 70rpx;
+  height: 1136rpx;
 }
 
 .child {
@@ -174,4 +175,8 @@ button::after {
   color: black;
   background-color: RGB(153, 153, 153);
 } 
+
+swiper-item scroll-view {
+  display: inline;
+}
 

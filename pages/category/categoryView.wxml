@@ -1,6 +1,6 @@
 <!--categoryView.wxml-->
 <template name="itemInfoTemplate">
-	<view class="child">
+	<view class="child" bindtap="itemTap">
   		<view>
   			<image class="child-img" src="{{item.imgSrc}}" />
   			<text class="itemTitle">{{item.title}}</text>
@@ -18,7 +18,7 @@
   <view class="navbar">
     <view class="nav-1">  
     	<scroll-view scroll-x="true" class="nav-1-left" scroll-left="{{scrollLeftValue}}" wx:if="{{!isPickerShow}}">
-      	<view wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" 
+      	<view wx:for="{{categories}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" 
           wx:key="unique" bindtap="navbarTap">{{item}}</view>
     	</scroll-view>
     	<view class="nav-1-left" wx:if="{{isPickerShow}}">
@@ -33,20 +33,26 @@
   	<view class="picker" wx:if="{{isPickerShow}}">
     	<view class="spitLine"></view>
     	<view class="picker-contain">
-      	<view wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" 
+      	<view wx:for="{{categories}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" 
           wx:key="unique" bindtap="navbarTap">{{item}}</view>
     	</view>
   	</view>
   </view>
 
-  <scroll-view scroll-y="true" class="itemContainer">
-  	<block wx:for="{{commodities}}" data-idx="{{index}}" wx:key="unique">
-  		<template is="itemInfoTemplate" data="{{item}}"/>
+  <swiper class="itemContainer" bindchange="swiperChange" current="currentTab">
+		<block wx:for="{{categories}}" wx:for-item="cItem" wx:key="unique">
+			<swiper-item>
+					<scroll-view scroll-y="true">
+  				<block wx:for="{{commodities}}" data-idx="{{index}}" wx:key="unique" wx:if="{{item.category == cItem || cItem == '全部'}}">
+  				<template is="itemInfoTemplate" data="{{item}}"/>
+					</block>
+  			</scroll-view>
+			</swiper-item>
 		</block>
-  </scroll-view>
+  </swiper>
 
 	<!-- 透明遮盖层 -->
-  <view class="picker-contain-bg {{isPickerShow? 'show' : ''}}" bindtap="navbarBtnClick"></view>
+  <view class="picker-contain-bg {{isPickerShow? 'show' : ''}}" wx:if="{{isBgNeed}}" bindtap="bgTap"></view>
 
 </view>
 
