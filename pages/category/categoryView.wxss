@@ -72,6 +72,10 @@ button::after {
   height: 40rpx;
 }
 
+.navbarBtn.icon.active{
+  transform: rotate(-90deg);
+}
+
 .blankblock {
   flex: 0 0 10%;
 }

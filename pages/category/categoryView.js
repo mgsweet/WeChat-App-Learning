@@ -5,6 +5,38 @@ Page({
     currentTab: 0,
     scrollLeftValue: 0,
     isPickerShow: false,
+    commodities: [
+      {
+        category: "食品",
+        imgSrc: "../../resources/商品图测试.jpg",
+        title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
+        price: 999
+      },
+      {
+        category: "食品",
+        imgSrc: "../../resources/商品图测试.jpg",
+        title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
+        price: 999
+      },
+      {
+        category: "食品",
+        imgSrc: "../../resources/商品图测试.jpg",
+        title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
+        price: 999
+      },
+      {
+        category: "食品",
+        imgSrc: "../../resources/商品图测试.jpg",
+        title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
+        price: 999
+      },
+      {
+        category: "食品",
+        imgSrc: "../../resources/商品图测试.jpg",
+        title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
+        price: 999
+      }
+    ]
   },
   navbarTap: function (e) {
     //auto scroll
@@ -14,6 +46,10 @@ Page({
       this.setData({
         scrollLeftValue: this.data.scrollLeftValue
       })
+    }
+
+    if (this.data.isPickerShow) {
+      this.navbarBtnClick();
     }
 
     this.setData({

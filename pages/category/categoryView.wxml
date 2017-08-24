@@ -1,4 +1,18 @@
 <!--categoryView.wxml-->
+<template name="itemInfoTemplate">
+	<view class="child">
+  		<view>
+  			<image class="child-img" src="{{item.imgSrc}}" />
+  			<text class="itemTitle">{{item.title}}</text>
+  			<view class="money">
+  				<text class="moneyIcon">¥</text>
+  				<text>{{item.price}}</text>
+  			</view>
+  		</view>
+  	</view>
+</template>
+
+
 <!--顶部分类导航条-->  
 <view class="classname">
   <view class="navbar">
@@ -8,11 +22,11 @@
           wx:key="unique" bindtap="navbarTap">{{item}}</view>
     	</scroll-view>
     	<view class="nav-1-left" wx:if="{{isPickerShow}}">
-      	<view class="item left2Font">全部</view>
+      	<view class="item left2Font">{{navbar[currentTab]}}</view>
     	</view> 
     <!-- <view class="blankblock"></view> -->
     	<button class="navbarBtn" bindtap="navbarBtnClick">
-      	<image src="../../resources/返回.png" class="navbarBtn icon"></image>
+      	<image src="../../resources/返回.png" class="navbarBtn icon {{isPickerShow ? 'active' : ''}}"></image>
     	</button> 
   	</view>
 
@@ -26,56 +40,9 @@
   </view>
 
   <scroll-view scroll-y="true" class="itemContainer">
-  	<view class="child">
-  		<view>
-  			<image class="child-img" src="../../resources/商品图测试.jpg" />
-  			<text class="itemTitle">商品信息</text>
-  			<view class="money">
-  				<text class="moneyIcon">¥</text>
-  				<text>99</text>
-  			</view>
-  		</view>
-  	</view>
-  	<view class="child">
-  		<view>
-  			<image class="child-img" src="../../resources/商品图测试.jpg" />
-  			<text class="itemTitle">商品信息</text>
-  			<view class="money">
-  				<text class="moneyIcon">¥</text>
-  				<text>99</text>
-  			</view>
-  		</view>
-  	</view>
-  	<view class="child">
-  		<view>
-  			<image class="child-img" src="../../resources/商品图测试.jpg" />
-  			<text class="itemTitle">商品信息</text>
-  			<view class="money">
-  				<text class="moneyIcon">¥</text>
-  				<text>99</text>
-  			</view>
-  		</view>
-  	</view>
-  	<view class="child">
-  		<view>
-  			<image class="child-img" src="../../resources/商品图测试.jpg" />
-  			<text class="itemTitle">商品信息</text>
-  			<view class="money">
-  				<text class="moneyIcon">¥</text>
-  				<text>99</text>
-  			</view>
-  		</view>
-  	</view>
-  	<view class="child">
-  		<view>
-  			<image class="child-img" src="../../resources/商品图测试.jpg" />
-  			<text class="itemTitle">商品信息</text>
-  			<view class="money">
-  				<text class="moneyIcon">¥</text>
-  				<text>99</text>
-  			</view>
-  		</view>
-  	</view>
+  	<block wx:for="{{commodities}}" data-idx="{{index}}" wx:key="unique">
+  		<template is="itemInfoTemplate" data="{{item}}"/>
+		</block>
   </scroll-view>
 
 	<!-- 透明遮盖层 -->
