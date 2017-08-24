@@ -1,17 +1,85 @@
 <!--categoryView.wxml-->
 <!--顶部分类导航条-->  
 <view class="classname">
-  <view class="navbar">  
-    <scroll-view scroll-x="true">
-      <view>
-        <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" 
-          wx:key="unique" bindtap="navbarTap">{{item}}</text>
-      </view>
-    </scroll-view>
-    <view class="blankblock"></view>
-    <button class="navbarBtn">
-      <image src="../../resources/返回.png" class="navbarBtn icon"></image>
-    </button> 
-  </view>  
+  <view class="navbar">
+    <view class="nav-1">  
+    	<scroll-view scroll-x="true" class="nav-1-left" scroll-left="{{scrollLeftValue}}" wx:if="{{!isPickerShow}}">
+      	<view wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" 
+          wx:key="unique" bindtap="navbarTap">{{item}}</view>
+    	</scroll-view>
+    	<view class="nav-1-left" wx:if="{{isPickerShow}}">
+      	<view class="item left2Font">全部</view>
+    	</view> 
+    <!-- <view class="blankblock"></view> -->
+    	<button class="navbarBtn" bindtap="navbarBtnClick">
+      	<image src="../../resources/返回.png" class="navbarBtn icon"></image>
+    	</button> 
+  	</view>
+
+  	<view class="picker" wx:if="{{isPickerShow}}">
+    	<view class="spitLine"></view>
+    	<view class="picker-contain">
+      	<view wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" 
+          wx:key="unique" bindtap="navbarTap">{{item}}</view>
+    	</view>
+  	</view>
+  </view>
+
+  <scroll-view scroll-y="true" class="itemContainer">
+  	<view class="child">
+  		<view>
+  			<image class="child-img" src="../../resources/商品图测试.jpg" />
+  			<text class="itemTitle">商品信息</text>
+  			<view class="money">
+  				<text class="moneyIcon">¥</text>
+  				<text>99</text>
+  			</view>
+  		</view>
+  	</view>
+  	<view class="child">
+  		<view>
+  			<image class="child-img" src="../../resources/商品图测试.jpg" />
+  			<text class="itemTitle">商品信息</text>
+  			<view class="money">
+  				<text class="moneyIcon">¥</text>
+  				<text>99</text>
+  			</view>
+  		</view>
+  	</view>
+  	<view class="child">
+  		<view>
+  			<image class="child-img" src="../../resources/商品图测试.jpg" />
+  			<text class="itemTitle">商品信息</text>
+  			<view class="money">
+  				<text class="moneyIcon">¥</text>
+  				<text>99</text>
+  			</view>
+  		</view>
+  	</view>
+  	<view class="child">
+  		<view>
+  			<image class="child-img" src="../../resources/商品图测试.jpg" />
+  			<text class="itemTitle">商品信息</text>
+  			<view class="money">
+  				<text class="moneyIcon">¥</text>
+  				<text>99</text>
+  			</view>
+  		</view>
+  	</view>
+  	<view class="child">
+  		<view>
+  			<image class="child-img" src="../../resources/商品图测试.jpg" />
+  			<text class="itemTitle">商品信息</text>
+  			<view class="money">
+  				<text class="moneyIcon">¥</text>
+  				<text>99</text>
+  			</view>
+  		</view>
+  	</view>
+  </scroll-view>
+
+	<!-- 透明遮盖层 -->
+  <view class="picker-contain-bg {{isPickerShow? 'show' : ''}}" bindtap="navbarBtnClick"></view>
+
 </view>
 

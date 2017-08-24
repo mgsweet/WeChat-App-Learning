@@ -21,7 +21,7 @@ Page({
     console.log('onLoad')
     var that = this
     wx.navigateTo({
-      url: '../locManage/locMan/locManView'
+      url: '../category/categoryView'
     })
     //调用应用实例的方法获取全局数据
   }

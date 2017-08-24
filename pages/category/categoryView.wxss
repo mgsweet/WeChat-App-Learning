@@ -1,38 +1,47 @@
-/* categoryView.wxss */
+@import "../../lib/flexGridStyle.wxss";
+
 page{  
   display: flex;  
   flex-direction: column;  
   height: 100%;  
 }  
 
-.navbar{  
+.navbar {
+  position: fixed;
+  z-index: 2;
+  background-color: RGB(247, 247, 247);
+  width: 100%
+}
+
+.nav-1{  
   flex: none;  
-  display: flex;  
+  display: flex;   
   background: #fff;  
-  /* height: 80rpx;
-  overflow: hidden; */
   background-color: RGB(247, 247, 247);
   height: 70rpx;
 }
 
-.navbar .wrapBar {
+.nav-1 .wrapBar {
   display: flex;
 }
 
-.navbar .item{  
-  position: relative;  
-  flex: auto;  
+.nav-1 .item{  
+  position: relative;   
   text-align: center;  
   font-size: 30rpx;
   line-height: 60rpx;  
   color: gray;
+  display: inline-block;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  height: 100%
 }  
 
-.navbar .item.active{  
+.nav-1 .item.active{  
   color: black;
 }  
 
-.navbar .item.active:after{  
+.nav-1 .item.active:after{  
   content: "";  
   display: block; 
   position: absolute;  
@@ -64,5 +73,101 @@ button::after {
 }
 
 .blankblock {
-  width: 30rpx;
+  flex: 0 0 10%;
 }
+
+.nav-1-left {
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 0 0 85%;
+}
+
+.picker {
+}
+
+.item.left2Font {
+  color: black;
+}
+
+.spitLine {
+  margin: 0;
+  height: 2rpx;
+  background-color: gray;
+}
+
+.itemContainer {
+  background-color: transparent;
+  margin-top: 70rpx;
+}
+
+.child {
+  /*display: inline-block;*/
+  width: 46%;
+  margin: 2%;
+  display: inline-block;
+  vertical-align: top;
+  background-color: RGB(242, 242, 242);
+}
+
+.child view {
+  display: flex;
+  flex-direction: column;
+  margin: 10rpx
+}
+
+.child view .money{
+  display: block;
+  margin-left: 0;
+}
+
+.child-img {
+  height: 400rpx;
+  width:100%;
+}
+
+.moneyIcon {
+  font-size: 30rpx;
+}
+
+.itemTitle {
+  font-size: 32rpx;
+  margin-top: 10rpx;
+}
+
+.picker-contain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.picker-contain-bg {
+  position: fixed;
+  background-color: black;
+  transition: all 1s;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  opacity: 0
+}
+
+.picker-contain-bg.show {
+  opacity: 0.5;
+}
+
+.picker-contain .item {
+  background-color: RGB(215, 215, 215);
+  border-radius:20px;
+  margin: 20rpx;
+  padding: 50rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  font-size: 30rpx;
+  color: RGB(161, 161, 161);
+}
+
+.picker-contain .item.active{  
+  color: black;
+  background-color: RGB(153, 153, 153);
+} 
+

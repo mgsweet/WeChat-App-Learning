@@ -2,8 +2,6 @@
 Page({
 	data: {
     addLocImageSrc: "../../../resources/新建地址.png",
-    editImageSrc: "../../../resources/编辑.png",
-    deleteImageSrc: "../../../resources/删除.png",
 		noLoc: {
 			image: '../../../resources/空地址.png',
 			warnText: '你还没有新建地址',

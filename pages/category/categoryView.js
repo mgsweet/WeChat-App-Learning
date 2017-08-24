@@ -1,16 +1,30 @@
 // categoryView.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    navbar: ['全部', '分类一', '分萨达三大类二', '分类三', '分类四', '分类五'],
-    currentTab: 0
+    navbar: ['全部', '分类一', '分大类一', '分类三', '分类四', '分类五', '分类三', '分类四', '分类五', '分类三', '分类四', '分类五'],
+    currentTab: 0,
+    scrollLeftValue: 0,
+    isPickerShow: false,
   },
   navbarTap: function (e) {
+    //auto scroll
+    var idx = e.currentTarget.dataset.idx;
+    if (idx > 2 || idx < this.data.navbar.length - 2) {
+      this.data.scrollLeftValue = (idx - 2) * 60;
+      this.setData({
+        scrollLeftValue: this.data.scrollLeftValue
+      })
+    }
+
     this.setData({
-      currentTab: e.currentTarget.dataset.idx
+      currentTab: idx
+    })
+  },
+  navbarBtnClick: function(e) {
+    this.data.isPickerShow = !this.data.isPickerShow
+    this.setData({
+      isPickerShow: this.data.isPickerShow,
+      needAnimation: true
     })
   },
 
@@ -18,7 +32,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log(res);
+      },
+    })
   },
 
   /**
