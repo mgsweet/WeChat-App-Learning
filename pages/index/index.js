@@ -17,6 +17,11 @@ Page({
       url: '../category/categoryView'
     })
   },
+  saleActsTap: function() {
+    wx.navigateTo({
+      url: '../saleArea/saleArea'
+    })
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this

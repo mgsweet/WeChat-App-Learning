@@ -1,5 +1,6 @@
 <!--categoryView.wxml-->
 <import src="../../lib/wxmlTemplate.wxml" />
+
 <!--顶部分类导航条-->  
 <view class="classname">
   <view class="navbar">
@@ -29,7 +30,7 @@
   <swiper class="itemContainer" bindchange="swiperChange" current="{{currentTab}}">
 		<block wx:for="{{categories}}" wx:for-item="cItem" wx:key="unique">
 			<swiper-item>
-				<scroll-view scroll-y="true" bindscrolltolower="downloadMoreItem">
+				<scroll-view scroll-y="true" bindscrolltolower="downloadMoreItem" bindscrolltoupper="updateItem">
   				<view class="child" bindtap="itemTap" wx:for="{{commodities[currentTab]}}" 
             data-idx="{{index}}" wx:key="unique" wx:if="{{item.category == cItem || cItem == '全部'}}">
   				  <template is="itemInfoTemplate" data="{{item}}"/>

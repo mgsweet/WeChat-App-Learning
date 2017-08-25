@@ -6,4 +6,7 @@
   <button bindtap="categoryTap" class="">
     <text class="Grid">分类选择</text>
   </button>
+  <button bindtap="saleActsTap" class="">
+    <text class="Grid">活动页面</text>
+  </button>
 </view>
