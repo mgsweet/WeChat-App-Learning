@@ -1,0 +1,11 @@
+<template name="itemInfoTemplate">
+	<view>
+  	<image class="child-img" src="{{item.imgSrc}}" />
+  	<text class="itemTitle">{{item.title}}</text>
+  	<view class="money">
+  		<text class="moneyIcon">¥</text>
+  		<text>{{item.realPrice}}</text>
+      <view class="salesMoney" wx:if="{{item.realPrice !== item.originalPrice}}">{{item.originalPrice}}</view>
+  	</view>
+  </view>
+</template>

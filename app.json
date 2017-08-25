@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/locManage/locMan/locManView",
     "pages/locManage/addLoc/addLocView",
-    "pages/category/categoryView"
+    "pages/category/categoryView",
+    "pages/saleArea/saleArea"
   ],
   "window": {
     "backgroundTextStyle": "light",

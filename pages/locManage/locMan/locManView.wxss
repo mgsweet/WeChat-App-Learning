@@ -1,4 +1,3 @@
-@import "../../../lib/myCheckBox.wxss";
 @import "../../../lib/flexGridStyle.wxss";
 
 page {

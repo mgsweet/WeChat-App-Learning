@@ -1,0 +1,19 @@
+<!--saleArea.wxml-->
+<import src="../../lib/wxmlTemplate.wxml" />
+
+<view>
+	<swiper class="saleActSwiper" current="{{currentTab}}" indicator-dots="true" indicator-active-color="#FFFFFF" bindchange="swiperChange">
+		<view wx:for="{{saleActs}}" wx:key="unique" data-idx="{{index}}">
+			<swiper-item>
+				<image src="{{item.actImgSrc}}"/>
+			</swiper-item>
+		</view>
+	</swiper>
+</view>
+
+<view class="itemContainer">
+  <view class="child" bindtap="itemTap" wx:for="{{commodities[currentTab]}}" 
+    data-idx="{{index}}" wx:key="unique">
+  	<template is="itemInfoTemplate" data="{{item}}"/>
+	</view>
+</view>

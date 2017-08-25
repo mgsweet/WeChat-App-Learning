@@ -21,7 +21,7 @@ Page({
     console.log('onLoad')
     var that = this
     wx.navigateTo({
-      url: '../category/categoryView'
+      url: '../saleArea/saleArea'
     })
     //调用应用实例的方法获取全局数据
   }

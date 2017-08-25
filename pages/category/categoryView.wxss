@@ -1,6 +1,7 @@
 @import "../../lib/flexGridStyle.wxss";
+@import "../../lib/itemShowStyle.wxss";
 
-page{  
+page {  
   display: flex;  
   flex-direction: column;  
   height: 100%;  
@@ -97,45 +98,6 @@ button::after {
   background-color: gray;
 }
 
-.itemContainer {
-  background-color: transparent;
-  margin-top: 80rpx;
-  height: 1136rpx;
-}
-
-.child {
-  /*display: inline-block;*/
-  width: 46%;
-  margin: 2%;
-  display: inline-block;
-  vertical-align: top;
-  background-color: RGB(242, 242, 242);
-}
-
-.child view {
-  display: flex;
-  flex-direction: column;
-  margin: 10rpx
-}
-
-.child view .money{
-  display: block;
-  margin-left: 0;
-}
-
-.child-img {
-  height: 400rpx;
-  width:100%;
-}
-
-.moneyIcon {
-  font-size: 30rpx;
-}
-
-.itemTitle {
-  font-size: 32rpx;
-  margin-top: 10rpx;
-}
 
 .picker-contain {
   display: flex;
@@ -178,10 +140,9 @@ swiper-item scroll-view {
   display: inline;
 }
 
-.money .salesMoney {
-  display: inline-block;
-  text-decoration:line-through;
-  font-size: 30rpx;
+swiper.itemContainer{
+  margin-top: 80rpx;
+  height: 1136rpx;
 }
 
 

@@ -1,5 +1,4 @@
 /* addLocView.wxss */
-@import "../../../lib/myCheckBox.wxss";
 @import "../../../lib/flexGridStyle.wxss";
 @import "../locMan/locManView.wxss";
 
