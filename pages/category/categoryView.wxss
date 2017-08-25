@@ -18,7 +18,7 @@ page{
   display: flex;   
   background: #fff;  
   background-color: RGB(247, 247, 247);
-  height: 70rpx;
+  height: 80rpx;
 }
 
 .nav-1 .wrapBar {
@@ -29,12 +29,11 @@ page{
   position: relative;   
   text-align: center;  
   font-size: 30rpx;
-  line-height: 60rpx;  
+  line-height: 80rpx;  
   color: gray;
   display: inline-block;
   padding-left: 20rpx;
   padding-right: 20rpx;
-  height: 100%
 }  
 
 .nav-1 .item.active{  
@@ -62,8 +61,7 @@ button::after {
 }
 
 .navbarBtn {
-  margin-left: 10rpx;
-  margin-right: 10rpx;
+  flex: 0 0 15%;
 }
 
 .navbarBtn.icon {
@@ -101,7 +99,7 @@ button::after {
 
 .itemContainer {
   background-color: transparent;
-  margin-top: 70rpx;
+  margin-top: 80rpx;
   height: 1136rpx;
 }
 
@@ -179,4 +177,25 @@ button::after {
 swiper-item scroll-view {
   display: inline;
 }
+
+.money .salesMoney {
+  display: inline-block;
+  text-decoration:line-through;
+  font-size: 30rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

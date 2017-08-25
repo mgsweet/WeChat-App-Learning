@@ -1,17 +1,15 @@
 <!--categoryView.wxml-->
 <template name="itemInfoTemplate">
-	<view class="child" bindtap="itemTap">
-  		<view>
-  			<image class="child-img" src="{{item.imgSrc}}" />
-  			<text class="itemTitle">{{item.title}}</text>
-  			<view class="money">
-  				<text class="moneyIcon">¥</text>
-  				<text>{{item.price}}</text>
-  			</view>
-  		</view>
+	<view>
+  	<image class="child-img" src="{{item.imgSrc}}" />
+  	<text class="itemTitle">{{item.title}}</text>
+  	<view class="money">
+  		<text class="moneyIcon">¥</text>
+  		<text>{{item.realPrice}}</text>
+      <view class="salesMoney" wx:if="{{item.realPrice !== item.originalPrice}}">{{item.originalPrice}}</view>
   	</view>
+  </view>
 </template>
-
 
 <!--顶部分类导航条-->  
 <view class="classname">
@@ -22,7 +20,7 @@
           wx:key="unique" bindtap="navbarTap">{{item}}</view>
     	</scroll-view>
     	<view class="nav-1-left" wx:if="{{isPickerShow}}">
-      	<view class="item left2Font">{{navbar[currentTab]}}</view>
+      	<view class="item left2Font">{{categories[currentTab]}}</view>
     	</view> 
     <!-- <view class="blankblock"></view> -->
     	<button class="navbarBtn" bindtap="navbarBtnClick">
@@ -39,13 +37,14 @@
   	</view>
   </view>
 
-  <swiper class="itemContainer" bindchange="swiperChange" current="currentTab">
+  <swiper class="itemContainer" bindchange="swiperChange" current="{{currentTab}}">
 		<block wx:for="{{categories}}" wx:for-item="cItem" wx:key="unique">
 			<swiper-item>
-					<scroll-view scroll-y="true">
-  				<block wx:for="{{commodities}}" data-idx="{{index}}" wx:key="unique" wx:if="{{item.category == cItem || cItem == '全部'}}">
-  				<template is="itemInfoTemplate" data="{{item}}"/>
-					</block>
+				<scroll-view scroll-y="true" bindscrolltolower="downloadMoreItem" bindscrolltoupper="updateItem">
+  				<view class="child" bindtap="itemTap" wx:for="{{commodities[currentTab]}}" 
+            data-idx="{{index}}" wx:key="unique" wx:if="{{item.category == cItem || cItem == '全部'}}">
+  				  <template is="itemInfoTemplate" data="{{item}}"/>
+					</view>
   			</scroll-view>
 			</swiper-item>
 		</block>
