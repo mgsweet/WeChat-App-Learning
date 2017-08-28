@@ -24,7 +24,7 @@
 		</block>
   </swiper>
 
-  <button class="bottomBar">
+  <button class="bottomBar" bindtap="bottomBarBtnClick">
   	去领券中心
   </button>
 </view>

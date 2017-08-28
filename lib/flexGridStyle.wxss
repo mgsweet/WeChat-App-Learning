@@ -52,21 +52,3 @@
   height: 20rpx;
 }
 
-.noInfoView {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center;
-}
-
-.noInfoIcon {
-  width: 150rpx;
-  height: 150rpx;
-}
-
-.noInfoWarn {
-  margin-top: 10rpx;
-  font-size: 25rpx;
-}

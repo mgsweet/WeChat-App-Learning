@@ -1,6 +1,5 @@
 .itemContainer {
   background-color: transparent;
-  
 }
 
 .child {
@@ -41,4 +40,96 @@
   display: inline-block;
   text-decoration:line-through;
   font-size: 30rpx;
+}
+
+.noInfoView {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
+
+.noInfoIcon {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.noInfoWarn {
+  margin-top: 10rpx;
+  font-size: 25rpx;
+}
+
+
+.couponItem {
+  display: inline-block;
+  width: 96%;
+  margin: 2%;
+  height: 240rpx;
+  background-color: RGB(235, 235, 235);
+}
+
+.couponItemFlex {
+  display: flex;
+  height: 100%
+}
+
+.couponItem-left {
+  display: flex;
+  flex-direction: column;
+  width: 240rpx;
+  background-color: RGB(242, 242, 242);
+  align-items: center;
+  justify-content: center;
+}
+
+.couponPriceIcon {
+  font-size: 25rpx;
+}
+
+.couponPriceNum {
+  font-weight: border;
+  font-size: 70rpx;
+}
+
+.couponCondition {
+  font-size: 25rpx;
+}
+
+.couponItem-middle {
+  display: flex;
+  flex-direction: column;
+  width: 400rpx;
+}
+
+.couponItem-middle text {
+  padding-left: 10rpx;
+}
+
+.couponTitle {
+  padding-top:20rpx;
+  padding-bottom: 20rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+
+.couponTimeStamp {
+  font-size: 25rpx;
+}
+
+.couponItem-right {
+  display: flex;
+  width: 80rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.couponItem-right text {
+  width: 35rpx;
+  font-size: 35rpx;
+}
+
+.couponContainer scroll-view {
+  height: 100%;
 }

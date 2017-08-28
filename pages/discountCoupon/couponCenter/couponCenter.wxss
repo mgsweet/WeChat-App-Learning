@@ -1,1 +1,6 @@
 /* couponCenter.wxss */
+@import "../../../lib/itemShowStyle.wxss";
+
+.myContainer {
+	height: 1206rpx;
+}

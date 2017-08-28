@@ -5,13 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //couponStatus 0: 立即使用, 1: 点击领取, 2:已使用, 3:已过期
     couponTypes: ['未使用', '使用记录', '已过期'],
     currentTab:0,
     couponItems: [[], [], []]
   },
+
+  bottomBarBtnClick: function() {
+    wx.redirectTo({
+      url: '../couponCenter/couponCenter'
+    })
+  },
+
   //测试用函数
   getNotUsedCoupon: function() {
+    //couponStatus 0: 立即使用, 1: 点击领取, 2:已使用, 3:已过期
     this.data.couponItems[0] = this.requestForItemsOfType(0);
     this.setData({
       couponItems: this.data.couponItems
@@ -103,7 +110,7 @@ Page({
       tempArr.push(temp);
     }
     return tempArr;
-  } 
+  }
   
 })
 

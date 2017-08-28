@@ -1,2 +1,17 @@
 <!--couponCenter.wxml-->
-<text>couponCenter.wxml</text>
+<import src="../../../lib/wxmlTemplate.wxml" />
+
+<view class="myContainer">
+
+	<view class='noInfoView' wx:if="{{coupons.length == 0}}">
+		<image class="noInfoIcon" src="../../../resources/空订单.png" />
+		<text class="noInfoWarn">您暂时无优惠券可领</text>
+	</view>
+
+	<scroll-view scroll-y="true" wx:if="{{coupons.length > 0}}">
+		<block wx:for="{{coupons}}" wx:key="unique">
+			<template is="couponItemTemplate" data="{{item}}"/>
+		</block>
+	</scroll-view>
+
+</view>

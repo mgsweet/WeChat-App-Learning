@@ -27,11 +27,16 @@ Page({
       url: '../discountCoupon/couponMan/couponMan'
     })
   },
+  couponCenterTap: function() {
+    wx.navigateTo({
+      url: '../discountCoupon/couponCenter/couponCenter'
+    })
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this
     wx.navigateTo({
-      url: '../discountCoupon/couponMan/couponMan'
+      url: '../discountCoupon/couponCenter/couponCenter'
     })
     //调用应用实例的方法获取全局数据
   }
