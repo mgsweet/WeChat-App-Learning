@@ -10,7 +10,7 @@ Page({
     currentTab:0,
     couponItems: [[], [], []]
   },
-
+  //测试用函数
   getNotUsedCoupon: function() {
     this.data.couponItems[0] = this.requestForItemsOfType(0);
     this.setData({

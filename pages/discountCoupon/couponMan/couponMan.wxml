@@ -1,5 +1,5 @@
 <!--discountCounpon.wxml-->
-<import src="../../lib/wxmlTemplate.wxml" />
+<import src="../../../lib/wxmlTemplate.wxml" />
 
 <view class="">
 
@@ -12,12 +12,12 @@
 		<block wx:for="couponItems" wx:for-item="cItem" wx:key="unique" wx:for-index="cIndex">
 			<swiper-item>
 				<view class='noInfoView' wx:if="{{couponItems[cIndex].length == 0}}">
-					<image class="noInfoIcon" src="../../resources/空订单.png" />
+					<image class="noInfoIcon" src="../../../resources/空订单.png" />
 					<text class="noInfoWarn">您暂时无相关优惠券</text>
 				</view>
 				<scroll-view scroll-y="true" wx:if="{{couponItems[cIndex].length > 0}}">
-					<block wx:for="{{couponItems[cIndex]}}">
-						<template is="couponItemTemplate" data="{{item}}" wx:key="unique"/>
+					<block wx:for="{{couponItems[cIndex]}}" wx:key="unique">
+						<template is="couponItemTemplate" data="{{item}}"/>
 					</block>
 				</scroll-view>
 			</swiper-item>

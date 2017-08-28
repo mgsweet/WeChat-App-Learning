@@ -24,14 +24,14 @@ Page({
   },
   discountCouponTap: function() {
     wx.navigateTo({
-      url: '../discountCoupon/discountCoupon'
+      url: '../discountCoupon/couponMan/couponMan'
     })
   },
   onLoad: function () {
     console.log('onLoad')
     var that = this
     wx.navigateTo({
-      url: '../discountCoupon/discountCoupon'
+      url: '../discountCoupon/couponMan/couponMan'
     })
     //调用应用实例的方法获取全局数据
   }
