@@ -40,9 +40,9 @@
 
 <view class="myContainer">
 
-	<view wx:if="{{userLocInfo.length == 0}}" class='noLocView'>
-		<image class='noLocIcon' mode="{{noLoc.mode}}" src="{{noLoc.image}}"></image>
-		<text class="noLocWarn">{{noLoc.warnText}}</text>
+	<view wx:if="{{userLocInfo.length == 0}}" class='noInfoView'>
+		<image class='noInfoIcon' mode="{{noLoc.mode}}" src="{{noLoc.image}}"></image>
+		<text class="noInfoWarn">{{noLoc.warnText}}</text>
 	</view>
 
   <scroll-view scroll-y wx:else class="hasLocView">

@@ -1,0 +1,53 @@
+/* discountCounpon.wxss */
+@import "../../lib/flexGridStyle.wxss";
+
+.navbar {
+  background-color: RGB(247, 247, 247);
+  flex: none;  
+  display: flex;  
+}
+
+.navbar .item{  
+  position: relative;   
+  text-align: center;  
+  font-size: 30rpx;
+  line-height: 80rpx; 
+  flex: auto;
+  color: gray;
+  display: inline-block;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}  
+
+.navbar .item.active{  
+  color: black;
+}  
+
+.navbar .item.active:after{  
+  content: "";  
+  display: block; 
+  position: absolute;  
+  bottom: 0;  
+  left: 0;  
+  right: 0; 
+  height: 4rpx;  
+  background: black;  
+} 
+
+.bottomBar {
+	background-color: RGB(242, 242, 242);
+	text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0rpx;
+  border: 0;
+  border-radius: 0;
+}
+
+.couponContainer {
+  height: 1034rpx;
+}
+
+button::after {
+  border: 0;
+}

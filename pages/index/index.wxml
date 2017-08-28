@@ -9,4 +9,7 @@
   <button bindtap="saleActsTap" class="">
     <text class="Grid">活动页面</text>
   </button>
+  <button bindtap="discountCouponTap">
+    <text class="Grid">优惠券页面</text>
+  </button>
 </view>

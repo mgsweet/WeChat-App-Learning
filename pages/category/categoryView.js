@@ -13,6 +13,7 @@ Page({
     //auto scroll
     var idx = e.currentTarget.dataset.idx;
 
+    //自动移动导航栏滑动的位置
     this.autoScrollTopNav(idx);
 
     if (this.data.isPickerShow) {

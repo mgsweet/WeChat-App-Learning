@@ -5,7 +5,8 @@
     "pages/locManage/locMan/locManView",
     "pages/locManage/addLoc/addLocView",
     "pages/category/categoryView",
-    "pages/saleArea/saleArea"
+    "pages/saleArea/saleArea",
+    "pages/discountCoupon/discountCoupon"
   ],
   "window": {
     "backgroundTextStyle": "light",

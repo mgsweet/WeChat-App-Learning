@@ -1,0 +1,28 @@
+<!--discountCounpon.wxml-->
+<view class="">
+	<view class="navbar">
+		<view wx:for="{{couponTypes}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" 
+          wx:key="unique" bindtap="navbarTap">{{item}}</view>
+	</view>
+	<swiper class="couponContainer" bindchange="swiperChange" current="{{currentTab}}">
+		<swiper-item>
+			<view class='noInfoView'>
+				<image class="noInfoIcon" src="../../resources/空订单.png"/>
+				<text class="noInfoWarn">您暂时无相关优惠券</text>
+			</view>
+		</swiper-item>
+		<swiper-item>
+			<view>
+				tab_02
+			</view>
+		</swiper-item>
+		<swiper-item>
+			<view>
+				tab_03
+			</view>
+		</swiper-item>
+  </swiper>
+  <button class="bottomBar">
+  	去领券中心
+  </button>
+</view>

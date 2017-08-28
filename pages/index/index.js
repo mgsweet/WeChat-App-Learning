@@ -22,11 +22,16 @@ Page({
       url: '../saleArea/saleArea'
     })
   },
+  discountCouponTap: function() {
+    wx.navigateTo({
+      url: '../discountCoupon/discountCoupon'
+    })
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this
     wx.navigateTo({
-      url: '../saleArea/saleArea'
+      url: '../discountCoupon/discountCoupon'
     })
     //调用应用实例的方法获取全局数据
   }
