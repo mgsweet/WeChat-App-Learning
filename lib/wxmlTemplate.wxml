@@ -9,3 +9,35 @@
   	</view>
   </view>
 </template>
+
+<template name="couponItemTemplate">
+	<view class="couponItem">
+
+		<view class="couponItemFlex">
+			<view class="couponItem-left">
+				<view class="couponPrice">
+					<text class="couponPriceIcon">¥</text>
+					<text class="couponPriceNum">{{item.couponPrice}}</text>
+				</view>
+				<text class="couponCondition">{{item.couponCondition}}</text>
+			</view>
+
+			<view class="couponItem-middle">
+				<text class="couponTitle">{{item.couponTitle}}</text>
+				<view class="couponTimeStamp">
+					<text>{{item.couponTimeStampStart}}</text>
+					<text>to</text>
+					<text>{{item.couponTimeStampEnd}}</text>
+				</view>
+			</view>
+
+			<view class="couponItem-right">
+				<text wx:if="{{item.couponStatus == 0}}">立即使用</text>
+				<text wx:if="{{item.couponStatus == 1}}">点击领取</text>
+				<text wx:if="{{item.couponStatus == 2}}">已使用</text>
+				<text wx:if="{{item.couponStatus == 3}}">已过期</text>
+			</view>
+
+		</view>
+	</view>
+</template>
