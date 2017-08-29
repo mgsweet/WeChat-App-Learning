@@ -10,17 +10,27 @@ Page({
     userLocInfo: [
     ],
 	},
-  max_id: -1,
+
+  getLocInfo: function() {
+    var that = this;
+    wx.getStorage({
+      key: 'UserLocInfo',
+      success: function (res) {
+        console.log(res.data)
+        that.data.userLocInfo = res.data;
+        that.setData({
+          userLocInfo: that.data.userLocInfo
+        })
+      },
+      fail: function (e) {
+        console.log("no address info");
+      }
+    })
+  },
 
 	addLocBtnTap: function() {
-    this.max_id++;
-    wx.setStorage({
-      key: 'UserLocInfo_maxId',
-      data: this.max_id,
-    })
-
-    var urlStr = '../addLoc/addLocView?id=' + this.max_id;
-    wx.redirectTo({
+    var urlStr = '../addLoc/addLocView?id=' + "-1";
+    wx.navigateTo({
       url: urlStr
     })
   },
@@ -47,7 +57,7 @@ Page({
       '&region1=' + seleteLoc.region[1] + '&region2=' + seleteLoc.region[2] + 
       '&isDefault=' + seleteLoc.isDefault;
 
-    wx.redirectTo({
+    wx.navigateTo({
       url: urlStr
     })
   },
@@ -141,40 +151,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getLocInfo();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var that = this;
-    wx.getStorage({
-      key: 'UserLocInfo_maxId',
-      success: function(res) {
-        console.log("max_id is " + res.data);
-        that.max_id = res.data;
-      },
-      fail: function(e) {
-        console.log("init address max_id")
-        wx.setStorage({
-          key: 'UserLocInfo_maxId',
-          data: -1,
-        })
-      }
-    })
-    wx.getStorage({
-      key: 'UserLocInfo',
-      success: function (res) {
-        console.log(res.data)
-        that.data.userLocInfo = res.data;
-        that.setData({
-          userLocInfo: that.data.userLocInfo
-        })
-      },
-      fail: function (e) {
-        console.log("no address info");
-      }
-    })
+
   },
 
   /**

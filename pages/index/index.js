@@ -36,7 +36,7 @@ Page({
     console.log('onLoad')
     var that = this
     wx.navigateTo({
-      url: '../discountCoupon/couponCenter/couponCenter'
+      url: '../locManage/locMan/locManView'
     })
     //调用应用实例的方法获取全局数据
   }

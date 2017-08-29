@@ -9,6 +9,35 @@ Page({
     hasErr: false
   },
 
+  max_id: -1,
+
+  updateMaxId: function() {
+    var that = this;
+    wx.getStorage({
+      key: 'UserLocInfo_maxId',
+      success: function(res) {
+        console.log("max_id is " + res.data);
+        that.max_id = res.data;
+      },
+      fail: function(e) {
+        console.log("init address max_id")
+        wx.setStorage({
+          key: 'UserLocInfo_maxId',
+          data: 0,
+        })
+        that.max_id = 0;
+      }
+    })
+  },
+
+  addLocMaxID: function() {
+    this.max_id++;
+    wx.setStorage({
+      key: 'UserLocInfo_maxId',
+      data: this.max_id,
+    })
+  },
+
   bindRegionChange: function (e) {
     this.data.locInfo.region = e.detail.value
     this.setData({
@@ -37,6 +66,7 @@ Page({
     })
   },
 
+  //判断输入是否为空，往后可加入更多判断
   checkData: function() {
     if (this.data.locInfo.name == "" || this.data.locInfo.num == "" || this.data.locInfo.address == "") {
       this.data.hasErr = true;
@@ -48,15 +78,9 @@ Page({
     return true;
   },
 
-  saveLocBtnTap: function() {
-    if (this.checkData() == false) return;
-    var newLoc = this.data.locInfo;
-
-    //更新信息数组函数
-    function updateInfoArr(userLocInfo, newLoc) {
-      //如果只有一个设置为默认地址
-      if (userLocInfo.length == 0) newLoc.isDefault = true;
-
+  //更新信息数组函数
+  updateInfoArr: function(userLocInfo, newLoc) {
+      console.log(newLoc)
       //判断是更新还是增加
       var checkPos = -1;
       for (var i in userLocInfo) {
@@ -64,8 +88,14 @@ Page({
           checkPos = i;
         }
       }
-      if (checkPos == -1) {
+      if (newLoc.id == -1) {
         console.log("add a new loc");
+
+        newLoc.id = this.max_id;
+        this.addLocMaxID();
+        //如果只有一个设置为默认地址
+        if (userLocInfo.length == 0) newLoc.isDefault = true;
+
         userLocInfo.push(newLoc);
       } else {
         console.log("update a old loc")
@@ -75,31 +105,37 @@ Page({
       wx.setStorage({
         key: 'UserLocInfo',
         data: userLocInfo,
-      })
-    }
+        success: function() {
+          //更新旧页面
+          var pages = getCurrentPages();
+          var prePage = pages[pages.length - 2];
+          prePage.getLocInfo();
 
-    wx.showToast({
-      title: '成功',
-      duration: 500
-    })
+          wx.navigateBack ({
+            url: '../locMan/locManView',
+          })
+        }
+      })
+  },
+
+  saveLocBtnTap: function() {
+    if (this.checkData() == false) return;
+
+    var newLoc = this.data.locInfo;
+
+    var that = this;
 
     wx.getStorage({
       key: "UserLocInfo",
       //这里确保数据完成存储再跳转页面
       success: function(res) {
         var userLocInfo = res.data;
-        updateInfoArr(userLocInfo, newLoc);
-        wx.redirectTo ({
-          url: '../locMan/locManView',
-        })
+        that.updateInfoArr(userLocInfo, newLoc);
       },
       fail: function(e) {
-        updateInfoArr([], newLoc);
+        that.updateInfoArr([], newLoc);
         console.log(e.errMsg);
         console.log("初始化数据")
-        wx.redirectTo({
-          url: '../locMan/locManView',
-        })
       }
     })
     //Todo
@@ -117,9 +153,10 @@ Page({
         name: options.name || "",
         region: [options.region0 || '北京市', options.region1 || '北京市', options.region2 || '东城区'],
         address: options.address,
-        isDefault: options.isDefault || 0
+        isDefault: (options.isDefault ? options.isDefault == "true" : false) 
     }
-    //更新页面放到onReady调用减少调用次数
+
+    this.updateMaxId();
   },
 
   /**
