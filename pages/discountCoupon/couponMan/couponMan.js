@@ -16,7 +16,9 @@ Page({
     })
   },
 
-  //测试用函数
+  /**
+   * 测试用函数 - 获取没有使用过的优惠券
+   */
   getNotUsedCoupon: function() {
     //couponStatus 0: 立即使用, 1: 点击领取, 2:已使用, 3:已过期
     this.data.couponItems[0] = this.requestForItemsOfType(0);
@@ -45,8 +47,11 @@ Page({
   onLoad: function (options) {
     this.getNotUsedCoupon();
   },
-  
-  //请求对应分类的商品
+
+  /**
+   * 模拟向后台请求对应分类的商品
+   * param {number} itemStatus - 0: 立即使用, 1: 点击领取, 2:已使用, 3:已过期
+   */
   requestForItemsOfType: function (itemType) {
     var temp = {
       couponPrice: 10,

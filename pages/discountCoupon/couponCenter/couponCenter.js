@@ -14,8 +14,10 @@ Page({
   onLoad: function (options) {
     this.getAvailableCoupons();
   },
-
-  //测试用函数
+ 
+  /**
+   * 测试用函数
+   */
   getAvailableCoupons: function() {
     //couponStatus 0: 立即使用, 1: 点击领取, 2:已使用, 3:已过期
     this.data.coupons = this.requestForItemsOfType(1);
@@ -24,8 +26,11 @@ Page({
     })
   },
 
-  //请求对应分类的商品
-  requestForItemsOfType: function (itemType) {
+  /**
+   * 模拟向后台请求对应分类的商品
+   * param {number} itemStatus - 0: 立即使用, 1: 点击领取, 2:已使用, 3:已过期
+   */
+  requestForItemsOfType: function (itemStatus) {
     var temp = {
       couponPrice: 10,
       couponTitle: "虐狗必备优惠券",
@@ -34,7 +39,7 @@ Page({
       couponTimeStampEnd: "2018-10-10",
       couponStatus: 0
     }
-    temp.couponStatus = itemType;
+    temp.couponStatus = itemStatus;
     var tempArr = [];
     for (var i = 0; i < 10; i++) {
       tempArr.push(temp);

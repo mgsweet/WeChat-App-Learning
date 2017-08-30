@@ -109,9 +109,10 @@ Page({
     })
   },
 
-  //设置默认地址
+  /***
+   * 设置默认地址
+   */
   setDefaultLoc: function(e) {
-    //找到原来的默认
     var x;
     var y;
 

@@ -1,16 +1,19 @@
 // addLocView.js
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     locInfo : {
     },
     hasErr: false
   },
 
+  /**
+   * 用于记录用户地址的最大id数，只会自增，相当于地址的key
+   */
   max_id: -1,
 
+  /**
+   * 更新最大id的值，只增不减
+   */
   updateMaxId: function() {
     var that = this;
     wx.getStorage({
@@ -30,6 +33,9 @@ Page({
     })
   },
 
+  /**
+   * 最大id增加1
+   */
   addLocMaxID: function() {
     this.max_id++;
     wx.setStorage({
@@ -66,7 +72,10 @@ Page({
     })
   },
 
-  //判断输入是否为空，往后可加入更多判断
+  
+  /**
+   * 判断输入是否为空，往后可加入更多判断，为空给出提示
+   */
   checkData: function() {
     if (this.data.locInfo.name == "" || this.data.locInfo.num == "" || this.data.locInfo.address == "") {
       this.data.hasErr = true;
@@ -78,7 +87,11 @@ Page({
     return true;
   },
 
-  //更新信息数组函数
+  /**
+   * 更新用户地址信息数组函数
+   * param {array} userLocInfo - 原数组
+   * param {locInfo} newLoc - 新的地址信息
+   */
   updateInfoArr: function(userLocInfo, newLoc) {
       console.log(newLoc)
       //判断是更新还是增加
