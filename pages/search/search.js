@@ -91,6 +91,16 @@ Page({
     })
   },
 
+  historyItemTap: function(e) {
+    var idx = e.target.dataset.idx;
+    console.log(idx);
+    this.data.inputVal = this.data.searchHistory[idx];
+    this.setData({
+      inputVal: this.data.inputVal
+    });
+    this.searchConfirm();
+  },
+
   clearHistory: function() {
     console.log(1);
     var that = this;

@@ -38,10 +38,12 @@
 	<view class="spitLine"/>
 	<view class="historyBar-records">
 		<text class="noHisitory historyBar-records-text" wx:if="{{searchHistory.length === 0}}">暂无搜索历史</text>
-		<view wx:for="{{searchHistory}}" data-idx="index" wx:key="unique">
+
+		<view wx:for="{{searchHistory}}" data-idx="{{index}}" wx:key="unique" bindtap="historyItemTap">
 			<text class="historyBar-records-text">{{item}}</text>
 			<view class="spitLine"/>
 		</view>
+
 		<view class="clearHistoryBtn" wx:if="{{searchHistory.length > 0}}">
 			<view class="clearHistoryBtn-grid1" bindtap="clearHistory">
 				<icon type="clear" size ="11"/>
