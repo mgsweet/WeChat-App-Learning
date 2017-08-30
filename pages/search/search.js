@@ -41,7 +41,6 @@ Page({
       inputShowed: this.data.inputShowed
     });
   },
-  //点击取消按钮
   clearInput: function () {
     this.setData({
       inputVal: ""
@@ -55,24 +54,37 @@ Page({
   },
   //确认搜索内容 
   searchConfirm: function(e) {
+    if (this.data.inputVal === '') return
     this.updateHistory(this.data.inputVal);
     this.switchInputShowed();
   },
+
+  addOneDataToHistory: function(str) {
+    //检查重复
+    for (var i in this.data.searchHistory) {
+      if (this.data.searchHistory[i] === str) {
+        this.data.searchHistory.splice(i, 1);
+        break;
+      }
+    }
+    this.data.searchHistory = [str].concat(this.data.searchHistory);
+    //最多存10项
+    while (this.data.searchHistory.length > 10) {
+      this.data.searchHistory.shift();
+    }
+  },
+
   //更新本地存储历史数据
   updateHistory: function(str) {
     var that = this;
-    that.data.searchHistory.push(str);
-    //最多存10项
-    while (that.data.searchHistory.length > 10) {
-      that.data.searchHistory.shift();
-    }
+    this.addOneDataToHistory(str);
     that.setData({
       searchHistory: that.data.searchHistory
-    })
+    });
     wx.setStorage({
       key:"searchHistory",
       data: that.data.searchHistory
-    })
+    });
   },
   //设置页面上显示的history
   setHistory: function() {
@@ -92,8 +104,9 @@ Page({
   },
 
   historyItemTap: function(e) {
+    console.log(e);
     var idx = e.target.dataset.idx;
-    console.log(idx);
+    console.log("触发 " + idx);
     this.data.inputVal = this.data.searchHistory[idx];
     this.setData({
       inputVal: this.data.inputVal
@@ -102,7 +115,6 @@ Page({
   },
 
   clearHistory: function() {
-    console.log(1);
     var that = this;
     that.data.searchHistory = [];
     that.setData({

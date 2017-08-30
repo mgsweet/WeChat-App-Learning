@@ -11,7 +11,7 @@ Page({
   },
 
   bottomBarBtnClick: function() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../couponCenter/couponCenter'
     })
   },

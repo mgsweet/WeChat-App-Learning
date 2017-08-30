@@ -40,9 +40,9 @@ Page({
   onLoad: function () {
     console.log('onLoad')
     var that = this
-    wx.navigateTo({
-      url: '../search/search'
-    })
+    // wx.navigateTo({
+    //   url: '../search/search'
+    // })
     //调用应用实例的方法获取全局数据
   }
 })
