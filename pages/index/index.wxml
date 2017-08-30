@@ -15,4 +15,7 @@
   <button bindtap="couponCenterTap">
     <text class="Grid">领券中心页面</text>
   </button>
+  <button bindtap="searchTap">
+    <text class='Grid'>搜索页面</text>
+  </button>
 </view>

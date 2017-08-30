@@ -1,0 +1,62 @@
+/* search.wxss */
+@import "../../lib/weui.wxss";
+@import "../../lib/flexGridStyle.wxss";
+@import "../../lib/itemShowStyle.wxss";
+
+.weui-search-bar {
+	width: 100%;
+}
+
+.historyBar {
+	top: 96rpx;
+	height: 1110rpx;
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	background-color: white;
+}
+
+.historyBar .spitLine {
+	background-color: gray;
+	margin-top: 10rpx;
+}
+
+.historyBar-records {
+	margin-left: 20rpx;
+}
+
+.historyBar-records-text {
+	font-size: 35rpx;
+}
+
+.historyBar-title {
+	font-size: 35rpx;
+	font-weight: bolder;
+	margin-left: 20rpx;
+	margin-top: 30rpx;
+}
+
+.myContainer {
+	height: 1110rpx;
+}
+
+.historyBar-records-text.noHisitory {
+	font-size: 25rpx;
+	color: gray;
+}
+
+.clearHistoryBtn {
+	display: flex;
+	justify-content: center;
+}
+
+.clearHistoryBtn icon {
+	margin-right:5rpx; 
+}
+
+.clearHistoryBtn-grid1 {
+	padding: 20rpx;
+	padding-right: 40rpx;
+	padding-left: 40rpx;
+}
+

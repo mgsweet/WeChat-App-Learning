@@ -7,6 +7,11 @@ Page({
     userInfo: {}
   },
   //事件处理函数
+  searchTap: function() {
+    wx.navigateTo({
+      url: '../search/search'
+    })
+  },
   locManageTap: function() {
     wx.navigateTo({
       url: '../locManage/locMan/locManView'
@@ -36,7 +41,7 @@ Page({
     console.log('onLoad')
     var that = this
     wx.navigateTo({
-      url: '../locManage/locMan/locManView'
+      url: '../search/search'
     })
     //调用应用实例的方法获取全局数据
   }

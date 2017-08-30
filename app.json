@@ -7,7 +7,8 @@
     "pages/category/categoryView",
     "pages/saleArea/saleArea",
     "pages/discountCoupon/couponCenter/couponCenter",
-    "pages/discountCoupon/couponMan/couponMan"
+    "pages/discountCoupon/couponMan/couponMan",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
