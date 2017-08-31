@@ -1,7 +1,7 @@
 /* search.wxss */
-@import "../../lib/weui.wxss";
-@import "../../lib/flexGridStyle.wxss";
-@import "../../lib/itemShowStyle.wxss";
+@import "../../common/weui.wxss";
+@import "../../common/flexGridStyle.wxss";
+@import "../../common/itemShowStyle.wxss";
 
 .weui-search-bar {
 	width: 100%;

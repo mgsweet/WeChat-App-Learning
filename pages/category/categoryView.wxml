@@ -1,5 +1,5 @@
 <!--categoryView.wxml-->
-<import src="../../lib/wxmlTemplate.wxml" />
+<import src="../../common/wxmlTemplate.wxml" />
 
 <!--顶部分类导航条-->  
 <view class="">

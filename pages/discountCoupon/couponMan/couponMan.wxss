@@ -1,5 +1,5 @@
 /* discountCounpon.wxss */
-@import "../../../lib/itemShowStyle.wxss";
+@import "../../../common/itemShowStyle.wxss";
 
 .navbar {
   background-color: RGB(247, 247, 247);

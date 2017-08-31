@@ -1,5 +1,5 @@
 /* saleArea.wxss */
-@import "../../lib/itemShowStyle.wxss";
+@import "../../common/itemShowStyle.wxss";
 
 .saleAct {
 	width:100%;

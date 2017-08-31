@@ -1,9 +1,5 @@
 // discountCounpon.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     couponTypes: ['未使用', '使用记录', '已过期'],
     currentTab:0,

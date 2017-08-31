@@ -1,5 +1,5 @@
 <!--saleArea.wxml-->
-<import src="../../lib/wxmlTemplate.wxml" />
+<import src="../../common/wxmlTemplate.wxml" />
 
 <view>
 	<swiper class="saleActSwiper" current="{{currentTab}}" indicator-dots="true" indicator-active-color="#FFFFFF" bindchange="swiperChange">

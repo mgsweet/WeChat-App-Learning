@@ -1,5 +1,5 @@
 /* addLocView.wxss */
-@import "../../../lib/flexGridStyle.wxss";
+@import "../../../common/flexGridStyle.wxss";
 @import "../locMan/locManView.wxss";
 
 .editView {

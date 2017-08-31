@@ -1,5 +1,5 @@
-@import "../../../lib/flexGridStyle.wxss";
-@import "../../../lib/itemShowStyle.wxss";
+@import "../../../common/flexGridStyle.wxss";
+@import "../../../common/itemShowStyle.wxss";
 
 page {
 	height: 100%;

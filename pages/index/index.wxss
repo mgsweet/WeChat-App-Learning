@@ -1,5 +1,5 @@
 /**index.wxss**/
-@import "../../lib/weui.wxss";
+@import "../../common/weui.wxss";
 
 .userinfo {
   display: flex;

@@ -1,5 +1,5 @@
 <!--couponCenter.wxml-->
-<import src="../../../lib/wxmlTemplate.wxml" />
+<import src="../../../common/wxmlTemplate.wxml" />
 
 <view class="myContainer">
 

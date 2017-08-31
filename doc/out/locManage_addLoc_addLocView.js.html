@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: locManage/addLoc/addLocView.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: locManage/addLoc/addLocView.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// addLocView.js
+Page({
+  data: {
+    locInfo : {
+    },
+    hasErr: false
+  },
+
+  /**
+   * 用于记录用户地址的最大id数，只会自增，相当于地址的key
+   */
+  max_id: -1,
+
+  /**
+   * 更新最大id的值，只增不减
+   */
+  updateMaxId: function() {
+    var that = this;
+    wx.getStorage({
+      key: 'UserLocInfo_maxId',
+      success: function(res) {
+        console.log("max_id is " + res.data);
+        that.max_id = res.data;
+      },
+      fail: function(e) {
+        console.log("init address max_id")
+        wx.setStorage({
+          key: 'UserLocInfo_maxId',
+          data: 0,
+        })
+        that.max_id = 0;
+      }
+    })
+  },
+
+  /**
+   * 最大id增加1
+   */
+  addLocMaxID: function() {
+    this.max_id++;
+    wx.setStorage({
+      key: 'UserLocInfo_maxId',
+      data: this.max_id,
+    })
+  },
+
+  bindRegionChange: function (e) {
+    this.data.locInfo.region = e.detail.value
+    this.setData({
+      locInfo: this.data.locInfo
+    })
+  },
+
+  bindNameChange: function(e) {
+    this.data.locInfo.name = e.detail.value
+    this.setData({
+      locInfo: this.data.locInfo
+    })
+  },
+
+  bindNumChange: function(e) {
+    this.data.locInfo.num = e.detail.value
+    this.setData({
+      locInfo: this.data.locInfo
+    })
+  },
+
+  bindAddressChange: function (e) {
+    this.data.locInfo.address = e.detail.value
+    this.setData({
+      locInfo: this.data.locInfo
+    })
+  },
+
+  
+  /**
+   * 判断输入是否为空，往后可加入更多判断，为空给出提示
+   */
+  checkData: function() {
+    if (this.data.locInfo.name == "" || this.data.locInfo.num == "" || this.data.locInfo.address == "") {
+      this.data.hasErr = true;
+      this.setData({
+        hasErr: this.data.hasErr
+      })
+      return false;
+    }
+    return true;
+  },
+
+  /**
+   * 更新用户地址信息数组函数
+   * param {array} userLocInfo - 原数组
+   * param {locInfo} newLoc - 新的地址信息
+   */
+  updateInfoArr: function(userLocInfo, newLoc) {
+      console.log(newLoc)
+      //判断是更新还是增加
+      var checkPos = -1;
+      for (var i in userLocInfo) {
+        if (userLocInfo[i].id == newLoc.id) {
+          checkPos = i;
+        }
+      }
+      if (newLoc.id == -1) {
+        console.log("add a new loc");
+
+        newLoc.id = this.max_id;
+        this.addLocMaxID();
+        //如果只有一个设置为默认地址
+        if (userLocInfo.length == 0) newLoc.isDefault = true;
+
+        userLocInfo.push(newLoc);
+      } else {
+        console.log("update a old loc")
+        userLocInfo.splice(checkPos, 1, newLoc);
+      }
+
+      wx.setStorage({
+        key: 'UserLocInfo',
+        data: userLocInfo,
+        success: function() {
+          //更新旧页面
+          var pages = getCurrentPages();
+          var prePage = pages[pages.length - 2];
+          prePage.getLocInfo();
+
+          wx.navigateBack ({
+            url: '../locMan/locManView',
+          })
+        }
+      })
+  },
+
+  saveLocBtnTap: function() {
+    if (this.checkData() == false) return;
+
+    var newLoc = this.data.locInfo;
+
+    var that = this;
+
+    wx.getStorage({
+      key: "UserLocInfo",
+      //这里确保数据完成存储再跳转页面
+      success: function(res) {
+        var userLocInfo = res.data;
+        that.updateInfoArr(userLocInfo, newLoc);
+      },
+      fail: function(e) {
+        that.updateInfoArr([], newLoc);
+        console.log(e.errMsg);
+        console.log("初始化数据")
+      }
+    })
+    //Todo
+    //更新后端数据
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    console.log(options)
+    this.data.locInfo = {
+        id: options.id,
+        num: options.num || "",
+        name: options.name || "",
+        region: [options.region0 || '北京市', options.region1 || '北京市', options.region2 || '东城区'],
+        address: options.address,
+        isDefault: (options.isDefault ? options.isDefault == "true" : false) 
+    }
+
+    this.updateMaxId();
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    this.setData({
+      locInfo: this.data.locInfo
+    })
+  }
+})</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addLocMaxID">addLocMaxID</a></li><li><a href="global.html#addOneDataToHistory">addOneDataToHistory</a></li><li><a href="global.html#autoScrollTopNav">autoScrollTopNav</a></li><li><a href="global.html#bgTap">bgTap</a></li><li><a href="global.html#checkData">checkData</a></li><li><a href="global.html#clearHistory">clearHistory</a></li><li><a href="global.html#clearInput">clearInput</a></li><li><a href="global.html#downloadMoreItem">downloadMoreItem</a></li><li><a href="global.html#getAvailableCoupons">getAvailableCoupons</a></li><li><a href="global.html#getLocalHistory">getLocalHistory</a></li><li><a href="global.html#getNotUsedCoupon">getNotUsedCoupon</a></li><li><a href="global.html#hideInput">hideInput</a></li><li><a href="global.html#historyItemTap">historyItemTap</a></li><li><a href="global.html#itemTap">itemTap</a></li><li><a href="global.html#max_id">max_id</a></li><li><a href="global.html#navbarBtnClick">navbarBtnClick</a></li><li><a href="global.html#onHide">onHide</a></li><li><a href="global.html#onLoad">onLoad</a></li><li><a href="global.html#onReady">onReady</a></li><li><a href="global.html#requestForCategories">requestForCategories</a></li><li><a href="global.html#requestForItemsOfSaleAct">requestForItemsOfSaleAct</a></li><li><a href="global.html#requestForItemsOfType">requestForItemsOfType</a></li><li><a href="global.html#requestForSaleActs">requestForSaleActs</a></li><li><a href="global.html#searchConfirm">searchConfirm</a></li><li><a href="global.html#showInput">showInput</a></li><li><a href="global.html#swiperChange">swiperChange</a></li><li><a href="global.html#switchInputShowed">switchInputShowed</a></li><li><a href="global.html#updateHistory">updateHistory</a></li><li><a href="global.html#updateInfoArr">updateInfoArr</a></li><li><a href="global.html#updateItem">updateItem</a></li><li><a href="global.html#updateMaxId">updateMaxId</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Thu Aug 31 2017 11:05:42 GMT+0800 (CST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
