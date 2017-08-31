@@ -1,4 +1,4 @@
-# WeChat-App-UI
+# WeChat-App-Store-UI
 逐步将部分工作整理而成的微信小程序商城模版
 
 ## JSDoc注释文档生成
