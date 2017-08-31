@@ -1,21 +1,21 @@
 <!--index.wxml-->
-<view class="container">
-  <button bindtap="locManageTap" class="">
-    <text class="Grid">地址管理</text>
+<view class="page__bd page__bd_spacing">
+  <button bindtap="locManageTap" class="weui-btn" type="primary">
+    <text class="">地址管理</text>
   </button>
-  <button bindtap="categoryTap" class="">
-    <text class="Grid">分类选择</text>
+  <button bindtap="categoryTap" class="weui-btn" type="primary">
+    <text class="">分类选择</text>
   </button>
-  <button bindtap="saleActsTap" class="">
-    <text class="Grid">活动页面</text>
+  <button bindtap="saleActsTap" class="weui-btn" type="primary">
+    <text class="">活动页面</text>
   </button>
-  <button bindtap="discountCouponTap">
-    <text class="Grid">优惠券页面</text>
+  <button bindtap="discountCouponTap" class="weui-btn" type="primary">
+    <text class="">优惠券页面</text>
   </button>
-  <button bindtap="couponCenterTap">
-    <text class="Grid">领券中心页面</text>
+  <button bindtap="couponCenterTap" class="weui-btn" type="primary">
+    <text class="">领券中心页面</text>
   </button>
-  <button bindtap="searchTap">
-    <text class='Grid'>搜索页面</text>
+  <button bindtap="searchTap" class="weui-btn" type="primary">
+    <text class=''>搜索页面</text>
   </button>
 </view>

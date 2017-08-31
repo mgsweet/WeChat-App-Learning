@@ -1,64 +1,96 @@
 // search.js
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     inputShowed: true,
     inputVal: "",
     commodities: null,
     searchHistory: []
   },
-  // 下拉加载更多, 懒加载
+
+  /**
+   * 下拉加载更多, 懒加载，没接口暂时未写
+   */
   downloadMoreItem: function() {
     console.log('get more data')
-    // 没接口暂时未写
     // Todo
   },
-  //上拉刷新
+
+  
+  /**
+   * 上拉刷新，没接口暂时未写
+   */
   updateItem: function() {
     console.log('get more data')
-    // 没接口暂时未写
     // Todo
   },
+
+  /**
+   * 搜索栏控制函数 - 搜索框输入状态
+   */
   showInput: function () {
     this.setData({
       inputShowed: true
     });
   },
+
+  /**
+   * 搜索栏控制函数 - 搜索框变成非输入状态，同时清空搜索框
+   */
   hideInput: function () {
     this.setData({
       inputVal: "",
       inputShowed: false
     });
   },
-  //反转inputShowed
+
+  /**
+   * 搜索栏控制函数 - 反转inputShowed
+   */
   switchInputShowed:function() {
     this.data.inputShowed = !this.data.inputShowed;
     this.setData({
       inputShowed: this.data.inputShowed
     });
   },
+
+  /**
+   * 搜索栏控制函数 - 清空搜索框内容
+   */
   clearInput: function () {
     this.setData({
       inputVal: ""
     });
   },
-  //监听输入变化
+
   inputTyping: function (e) {
     this.setData({
       inputVal: e.detail.value
     });
   },
-  //确认搜索内容 
+
+  /**
+   * 搜索确认 - 更新历史记录，请求后台数据（待完善）
+   */
   searchConfirm: function(e) {
     if (this.data.inputVal === '') return
-    this.updateHistory(this.data.inputVal);
+    this.addOneDataToHistory(this.data.inputVal)
+    this.updateHistory();
     this.switchInputShowed();
+    //Todo - 获取后台数据
+    this.data.commodities = this.requestForItemsOfType(10);
+    console.log(this.data.commodities);
+    this.setData({
+      commodities: this.data.commodities
+    })
+    this.getLocalHistory();
   },
 
+  /**
+   * 增加一个搜索历史到历史记录
+   * 特性：检查重复，最多存10项
+   * param {string} str - 需添加的历史记录
+   */
   addOneDataToHistory: function(str) {
     //检查重复
     for (var i in this.data.searchHistory) {
@@ -74,10 +106,12 @@ Page({
     }
   },
 
-  //更新本地存储历史数据
-  updateHistory: function(str) {
+  /**
+   * 更新本地存储历史数据
+   * param {string} str - 需添加的历史记录
+   */
+  updateHistory: function() {
     var that = this;
-    this.addOneDataToHistory(str);
     that.setData({
       searchHistory: that.data.searchHistory
     });
@@ -86,8 +120,11 @@ Page({
       data: that.data.searchHistory
     });
   },
-  //设置页面上显示的history
-  setHistory: function() {
+
+  /**
+   * 获取用户本地历史记录
+   */
+  getLocalHistory: function() {
     var that = this;
     wx.getStorage({
       key: 'searchHistory',
@@ -103,10 +140,11 @@ Page({
     })
   },
 
+  /**
+   * 直接点击历史记录查询
+   */
   historyItemTap: function(e) {
-    console.log(e);
     var idx = e.target.dataset.idx;
-    console.log("触发 " + idx);
     this.data.inputVal = this.data.searchHistory[idx];
     this.setData({
       inputVal: this.data.inputVal
@@ -114,6 +152,9 @@ Page({
     this.searchConfirm();
   },
 
+  /**
+   * 清空历史记录
+   */
   clearHistory: function() {
     var that = this;
     that.data.searchHistory = [];
@@ -125,16 +166,12 @@ Page({
       data: that.data.searchHistory
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.commodities = this.requestForItemsOfType(10);
-    console.log(this.data.commodities);
-    this.setData({
-      commodities: this.data.commodities
-    })
-    this.setHistory();
+    this.getLocalHistory();
   },
 
   //请求对应分类的商品

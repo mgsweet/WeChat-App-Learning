@@ -1,8 +1,5 @@
 /**
- * <h4>Hello JSDOC</h4>
- * <p>EditorQ是一个演示级别的的富文本编辑器</p>
  * categoryView.js - 分类页面
- * @class categoryView
  */
 Page({
   data: {
