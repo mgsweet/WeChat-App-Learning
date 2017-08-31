@@ -1,4 +1,7 @@
 // discountCounpon.js
+
+var fakeData = require('../../../common/fakeData.js');
+
 Page({
   data: {
     couponTypes: ['未使用', '使用记录', '已过期'],
@@ -17,7 +20,7 @@ Page({
    */
   getNotUsedCoupon: function() {
     //couponStatus 0: 立即使用, 1: 点击领取, 2:已使用, 3:已过期
-    this.data.couponItems[0] = this.requestForItemsOfType(0);
+    this.data.couponItems[0] = fakeData.requestForCouponOfStatus(0);
     this.setData({
       couponItems: this.data.couponItems
     })
@@ -42,27 +45,6 @@ Page({
    */
   onLoad: function (options) {
     this.getNotUsedCoupon();
-  },
-
-  /**
-   * 模拟向后台请求对应分类的商品
-   * param {number} itemStatus - 0: 立即使用, 1: 点击领取, 2:已使用, 3:已过期
-   */
-  requestForItemsOfType: function (itemType) {
-    var temp = {
-      couponPrice: 10,
-      couponTitle: "虐狗必备优惠券",
-      couponCondition: "满199使用",
-      couponTimeStampStart: "2017-10-10",
-      couponTimeStampEnd: "2018-10-10",
-      couponStatus: 0
-    }
-    temp.couponStatus = itemType;
-    var tempArr = [];
-    for (var i = 0; i < 10; i++) {
-      tempArr.push(temp);
-    }
-    return tempArr;
   }
   
 })

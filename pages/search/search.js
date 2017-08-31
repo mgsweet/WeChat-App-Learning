@@ -1,4 +1,6 @@
 // search.js
+var fakeData = require('../../common/fakeData.js');
+
 Page({
   data: {
     inputShowed: true,
@@ -77,12 +79,11 @@ Page({
     this.updateHistory();
     this.switchInputShowed();
     //Todo - 获取后台数据
-    this.data.commodities = this.requestForItemsOfType(10);
+    this.data.commodities = fakeData.requestForItemsOfSearch(10, this.data.inputVal);
     console.log(this.data.commodities);
     this.setData({
       commodities: this.data.commodities
     })
-    this.getLocalHistory();
   },
 
   /**
@@ -171,21 +172,5 @@ Page({
    */
   onLoad: function (options) {
     this.getLocalHistory();
-  },
-
-  //请求对应分类的商品
-  requestForItemsOfType: function (num) {
-    var temp = {
-      category: "饮料",
-      imgSrc: "../../resources/商品图测试.jpg",
-      title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
-      realPrice: 999,
-      originalPrice: 1000
-    }
-    var tempArr = [];
-    for (var i = 0; i < num; i++) {
-      tempArr.push(temp);
-    }
-    return tempArr;
   }
 })

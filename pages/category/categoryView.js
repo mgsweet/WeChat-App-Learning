@@ -1,6 +1,9 @@
 /**
  * categoryView.js - 分类页面
  */
+
+var fakeData = require('../../common/fakeData.js')
+
 Page(
   {
   data: {
@@ -78,7 +81,7 @@ Page(
 
     //获取更多数据
     commodities[idx] = commodities[idx].concat(
-      this.requestForItemsOfType(commodities[idx].length, 10, this.data.categories[idx])
+      fakeData.requestForItemsOfType(commodities[idx].length, 10, this.data.categories[idx])
       );
 
     this.setData({
@@ -126,7 +129,7 @@ Page(
    */
   onLoad: function (options) {
     //首先获取类别项
-    this.data.categories = this.requestForCategories();
+    this.data.categories = fakeData.requestForCategories();
     this.setData({
       categories: this.data.categories
     })
@@ -134,42 +137,10 @@ Page(
     for (var i in this.data.categories) {
       this.data.commodities.push([]);
     }
-    this.data.commodities[0] = this.requestForItemsOfType(0, 10);
+    this.data.commodities[0] = fakeData.requestForItemsOfType(0, 10);
     console.log(this.data.commodities);
     this.setData({
       commodities: this.data.commodities
     })
-  },
-
-  /**
-   * 模仿后台传输数据项 - 请求分类项
-   */
-  requestForCategories: function() {
-    var data = ['全部', '女装', '男装', '食品', '情趣用品', '饮料', '睡衣'];
-    return data;
-  },
-
-  /**
-   * 模仿后台传输数据项 - 请求对应分类的商品
-   * @param {number} first - 请求的头一项在数据库中的索引位置
-   * @param {number} num - 请求的数据量
-   * @param {string} itemType - 请求的数据所属类别，默认为"全部"，可不填
-   * @return {array} 商品信息数组
-   */
-  requestForItemsOfType: function (first, num, itemType = '全部') {
-    var temp = {
-      category: "饮料",
-      imgSrc: "../../resources/商品图测试.jpg",
-      title: "超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面",
-      realPrice: 999,
-      originalPrice: 1000
-    }
-    temp.category = itemType;
-    temp.title = itemType + " - 超级无敌平靓正师奶抢购食神推介无敌澎湃鱼蛋车仔面"
-    var tempArr = [];
-    for (var i = 0; i < num; i++) {
-      tempArr.push(temp);
-    }
-    return tempArr;
-  } 
+  }
 })
